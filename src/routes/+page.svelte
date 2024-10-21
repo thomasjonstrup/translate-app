@@ -1,6 +1,7 @@
 <script lang="ts">
 	import IconSoundMaxFill from '$lib/assets/sound_max_fill.svg';
 	import IconCopy from '$lib/assets/Copy.svg';
+	import IconHorizontalLeftMargin from '$lib/assets/Horizontal_top_left_main.svg';
 
 	let translateText = $state('');
 	let result = $state('');
@@ -21,14 +22,23 @@
 	};
 </script>
 
-<div class="flex flex-col gap-4">
+<div class="flex flex-col gap-4 md:flex-row">
 	<div
 		class="bg-dark-grey opacity-95 rounded-3xl border border-border-grey p-5 font-bold w-full text-sm"
 	>
-		<div class="flex gap-2">
-			<button>Detect Language</button>
-			<button>English</button>
-			<button>Spanish</button>
+		<div class="flex justify-between border-b-2 p-2 border-border-grey">
+			<div class="flex gap-2">
+				<button>Detect Language</button>
+				<button>English</button>
+				<button>Spanish</button>
+			</div>
+
+			<button
+				class="h-8 w-8 border-2 flex justify-center items-center rounded-lg border-border-grey hover:border-white"
+				title="Copy"
+			>
+				<img src={IconHorizontalLeftMargin} alt="Left margin" />
+			</button>
 		</div>
 		<textarea
 			name="firstLanguate"
@@ -58,10 +68,19 @@
 	<div
 		class="bg-dark-grey opacity-95 rounded-3xl border border-border-grey grey p-5 font-bold w-full text-sm"
 	>
-		<div class="flex gap-2">
-			<button>Detect Language</button>
-			<button>English</button>
-			<button>Spanish</button>
+		<div class="flex justify-between border-b-2 p-2 border-border-grey">
+			<div class="flex gap-2">
+				<button>Detect Language</button>
+				<button>English</button>
+				<button>Spanish</button>
+			</div>
+
+			<button
+				class="h-8 w-8 border-2 flex justify-center items-center rounded-lg border-border-grey hover:border-white"
+				title="Copy"
+			>
+				<img src={IconHorizontalLeftMargin} alt="Left margin" />
+			</button>
 		</div>
 		<textarea
 			name="secondLanguate"

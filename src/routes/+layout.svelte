@@ -5,7 +5,7 @@
 	import logo from '$lib/assets/logo.svg';
 </script>
 
-<main class="container mx-auto px-4 flex justify-center text-center flex-col text-white">
+<main class="container max-w-4xl mx-auto px-4 flex justify-center text-center flex-col text-white">
 	<header class="pt-[4rem]">
 		<img src={logo} alt="App logo" class="mx-auto" />
 	</header>
