@@ -3,15 +3,21 @@
 	import IconCopy from '$lib/assets/Copy.svg';
 	import IconHorizontalLeftMargin from '$lib/assets/Horizontal_top_left_main.svg';
 
-	let translateText = $state('');
+	type LanguageTranslate = 'en' | 'fr' | 'es';
+
+	let translateText = $state('Hello, how are you?');
 	let result = $state('');
+	let languagesTranslate = $state<{ from: LanguageTranslate; to: LanguageTranslate }>({
+		from: 'en',
+		to: 'fr'
+	});
 
 	const translate = () => {
-		fetch(`https://api.mymemory.translated.net/get?q=${translateText}?!&langpair=en|fr`)
+		fetch(
+			`https://api.mymemory.translated.net/get?q=${translateText}?!&langpair=${languagesTranslate.from}|${languagesTranslate.to}`
+		)
 			.then((response) => response.json())
 			.then((data) => {
-				console.log(data);
-				console.log('data.responseData.translatedText', data.responseData.translatedText);
 				if (data.responseData && data.responseData.translatedText) {
 					result = data.responseData.translatedText;
 				}
@@ -19,6 +25,12 @@
 			.catch((error) => {
 				console.log(error);
 			});
+	};
+
+	translate();
+
+	const changeLanguage = (key: 'from' | 'to', language: LanguageTranslate) => {
+		languagesTranslate[key] = language;
 	};
 </script>
 
@@ -29,8 +41,14 @@
 		<div class="flex justify-between border-b-2 p-2 border-border-grey">
 			<div class="flex gap-2">
 				<button>Detect Language</button>
-				<button>English</button>
-				<button>Spanish</button>
+				<button
+					onclick={() => changeLanguage('from', 'en')}
+					class="rounded-md bg-border-grey hover:bg-border-grey py-1 px-4">English</button
+				>
+				<button
+					onclick={() => changeLanguage('from', 'fr')}
+					class="rounded-md bg-transparent hover:bg-border-grey py-1 px-4">French</button
+				>
 			</div>
 
 			<button
@@ -70,9 +88,18 @@
 	>
 		<div class="flex justify-between border-b-2 p-2 border-border-grey">
 			<div class="flex gap-2">
-				<button>Detect Language</button>
-				<button>English</button>
-				<button>Spanish</button>
+				<button
+					onclick={() => changeLanguage('to', 'en')}
+					class="rounded-md bg-transparent hover:bg-border-grey py-1 px-4">English</button
+				>
+				<button
+					onclick={() => changeLanguage('to', 'fr')}
+					class="rounded-md bg-border-grey hover:bg-border-grey py-1 px-4">French</button
+				>
+				<button
+					onclick={() => changeLanguage('to', 'es')}
+					class="rounded-md bg-border-grey hover:bg-border-grey py-1 px-4">Spanish</button
+				>
 			</div>
 
 			<button
