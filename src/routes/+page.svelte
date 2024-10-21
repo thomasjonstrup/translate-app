@@ -63,6 +63,7 @@
 			id="firstLanguage"
 			class="resize-none bg-transparent text-white border-none focus:outline-none h-32 w-full p-2 align-top"
 			bind:value={translateText}
+			maxlength="500"
 		></textarea>
 		<div class="flex flex-row justify-between mt-3">
 			<div class="flex gap-1">
@@ -114,6 +115,7 @@
 			id="secondLanguage"
 			class="resize-none bg-transparent text-white border-none focus:outline-none h-32 w-full p-2 align-top"
 			bind:value={result}
+			maxlength="500"
 		></textarea>
 		<div class="flex flex-row justify-between mt-3">
 			<div class="flex gap-1">
